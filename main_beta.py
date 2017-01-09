@@ -56,7 +56,7 @@ def button(bot, update):
 
     else:
         text = drugs_db.drug_db[drug]['info']
-        photo = drugs_db.drug_db[drug]['photo'])
+        photo = drugs_db.drug_db[drug]['photo']
 
         bot.sendPhoto(chat_id=query.message.chat.id,photo = photo)
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,message_id=query.message.message_id, parse_mode='HTML')
