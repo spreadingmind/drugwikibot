@@ -41,7 +41,7 @@ def start(bot, update):
     #update.message.reply_text(text, reply_markup=reply_markup)
     print(update.message.chat_id)
     bot.sendMessage(chat_id=update.message.chat_id, reply_markup=reply_markup, text=text)
-    text='start' + ' ' + str(update.message.chat_id)
+    text = 'start' + ' ' + str(update.message.chat_id)
     bot.sendMessage(chat_id='@samosa_boy', text = text)
 
 def button(bot, update):
@@ -60,7 +60,7 @@ def button(bot, update):
 
         bot.sendPhoto(chat_id=query.message.chat.id, photo = photo)
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,message_id=query.message.message_id, parse_mode='HTML')
-        text2 = drug + ' ' + query.message.chat.id
+        text2 = drug + ' ' + str(query.message.chat.id)
         bot.sendMessage(chat_id='@samosa_boy', text=text2)
         print(text2)
 
