@@ -53,17 +53,16 @@ def button(bot, update):
         text = 'Пожалуйста, выберите, о чем вы хотите узнать больше:'
         reply_markup = InlineKeyboardMarkup(keyboard)
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,message_id=query.message.message_id)
-        
+
     else:
-        print(drug)
         text = drugs_db.drug_db[drug]['info']
-        photo = drugs_db.drug_db[drug]['photo']
-        print(text)
+        photo = drugs_db.drug_db[drug]['photo'])
 
         bot.sendPhoto(chat_id=query.message.chat.id,photo = photo)
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,message_id=query.message.message_id, parse_mode='HTML')
         text = drug + ' ' + query.message.chat.id
         bot.sendMessage(chat_id=47303188, text=text)
+        print(text)
 
 
 start_handler = CommandHandler('start', start)
