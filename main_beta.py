@@ -1,4 +1,4 @@
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import os
 import logging
@@ -61,7 +61,7 @@ def button(bot, update):
 
         bot.sendPhoto(chat_id=query.message.chat.id,photo = photo)
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,message_id=query.message.message_id, parse_mode='HTML')
-        text = drug + ' ' + str(query.message.chat.id)
+        text = drug + ' ' + query.message.chat.id
         bot.sendMessage(chat_id=47303188, text=text)
 
 
