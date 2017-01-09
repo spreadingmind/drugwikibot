@@ -53,6 +53,7 @@ def button(bot, update):
         text = 'Пожалуйста, выберите, о чем вы хотите узнать больше:'
         reply_markup = InlineKeyboardMarkup(keyboard)
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,message_id=query.message.message_id)
+        
     else:
         print(drug)
         text = drugs_db.drug_db[drug]['info']
