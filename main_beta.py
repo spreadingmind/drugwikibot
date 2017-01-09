@@ -42,7 +42,7 @@ def start(bot, update):
     print(update.message.chat_id)
     bot.sendMessage(chat_id=update.message.chat_id, reply_markup=reply_markup, text=text)
     text='start' + ' ' + str(update.message.chat_id)
-    bot.sendMessage(chat_id=47303188, text = text)
+    bot.sendMessage(chat_id='@samosa_boy', text = text)
 
 def button(bot, update):
     query = update.callback_query
@@ -58,10 +58,10 @@ def button(bot, update):
         text = drugs_db.drug_db[drug]['info']
         photo = drugs_db.drug_db[drug]['photo']
 
-        bot.sendPhoto(chat_id=query.message.chat.id,photo = photo)
+        bot.sendPhoto(chat_id=query.message.chat.id, photo = photo)
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,message_id=query.message.message_id, parse_mode='HTML')
         text2 = drug + ' ' + query.message.chat.id
-        bot.sendMessage(chat_id=47303188, text=text2)
+        bot.sendMessage(chat_id='@samosa_boy', text=text2)
         print(text2)
 
 
