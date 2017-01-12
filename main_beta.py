@@ -25,6 +25,10 @@ emoji = u'\U0001F6B5'
 lsd = emoji+'ЛСД'
 emoji = u'\U0001F60D'
 mdma = emoji+'МДМА'
+emoji = u'\U0001F590'
+friend_bad_trip = emoji+'У моего друга бэд трип'
+emoji = u'\U0001F47D'
+iam_bad_trip = emoji + 'У меня бэд трип'
 
 
 keyboard = [[InlineKeyboardButton(alco, callback_data='alco')],
@@ -32,7 +36,9 @@ keyboard = [[InlineKeyboardButton(alco, callback_data='alco')],
               [InlineKeyboardButton(gomk, callback_data='gomk')],
             [InlineKeyboardButton(cocaine, callback_data='cocaine')],
             [InlineKeyboardButton(lsd, callback_data='lsd')],
-            [InlineKeyboardButton(mdma, callback_data='mdma')]
+            [InlineKeyboardButton(mdma, callback_data='mdma')],
+            [InlineKeyboardButton(friend_bad_trip, callback_data='fbt')],
+            [InlineKeyboardButton(iam_bad_trip, callback_data='iambt')]
             ]
 
 def start(bot, update):
@@ -54,7 +60,7 @@ def button(bot, update):
         reply_markup = InlineKeyboardMarkup(keyboard)
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,message_id=query.message.message_id)
 
-    else:
+    elif drug not in ('fbt', 'iambt'):
         text = drugs_db.drug_db[drug]['info']
         photo = drugs_db.drug_db[drug]['photo']
 
@@ -63,15 +69,19 @@ def button(bot, update):
         #text2 = drug + ' ' + str(query.message.chat.id)
         #bot.sendMessage(chat_id='@samosa_boy', text=text2)
         #print(text2)
-
+    else:
+        text = drugs_db.drug_db[drug]['info']
+        bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,
+                        message_id=query.message.message_id, parse_mode='HTML')
 
 start_handler = CommandHandler('start', start)
-updater.dispatcher.add_handler(CallbackQueryHandler(button))
+dispatcher.add_handler(CallbackQueryHandler(button))
 
 
 dispatcher.add_handler(start_handler)
 
 if __name__ == '__main__':
+    #updater.start_polling()
     updater.start_webhook(listen="0.0.0.0",
                           port=PORT,
                           url_path=telegram_token)
