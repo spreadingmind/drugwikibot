@@ -66,7 +66,7 @@ def button(bot, update):
 
         bot.sendPhoto(chat_id=query.message.chat.id, photo = photo)
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,message_id=query.message.message_id, parse_mode='HTML')
-        text2 = drug + ' ' + str(query.message.chat.id)
+        text2 = drug + ' ' + str(query.message.from_user.id)
         bot.sendMessage(chat_id=47303188, text=text2)
         #print(text2)
     else:
@@ -74,7 +74,7 @@ def button(bot, update):
 
         bot.sendMessage(chat_id=query.message.chat.id, text=text, reply_markup=reply_markup,
                         message_id=query.message.message_id, parse_mode='HTML')
-        text2 = drug + ' ' + str(query.message.chat.id)
+        text2 = drug + ' ' + str(query.message.from_user.id)
         bot.sendMessage(chat_id=47303188, text=text2)
 
 start_handler = CommandHandler('start', start)
